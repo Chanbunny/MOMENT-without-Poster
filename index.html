@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOMENT 心瞬研究｜心理健康與日常生活經歷計劃</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1da69e;
+    --primary-dark: #157a75;
+    --primary-light: #d4f0ee;
+    --accent: #e9c46a;
+    --text-dark: #22333b;
+    --text-light: #6b8a86;
+    --bg: #f0f8f7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+    background-color: var(--bg);
+    color: var(--text-dark);
+    line-height: 1.8;
+    scroll-behavior: smooth;
+  }
+
+  /* ===== 導覽列 ===== */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    z-index: 100;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+  }
+  nav .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 900;
+    color: var(--primary-dark);
+    letter-spacing: 2px;
+  }
+  nav .logo img { height: 36px; width: auto; display: block; }
+  nav .links a {
+    color: var(--text-dark);
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  nav .links a:hover { color: var(--primary); }
+  nav .btn-nav {
+    background: var(--primary);
+    color: #fff !important;
+    padding: 6px 16px;
+    border-radius: 20px;
+  }
+
+  /* ===== 頂部橫幅 ===== */
+  header {
+    background: linear-gradient(135deg, #157a75 0%, #1da69e 50%, #4dc4bd 100%);
+    color: #fff;
+    padding: 90px 20px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: "";
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+    animation: rotate 20s linear infinite;
+  }
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .brand {
+    font-size: 5rem;
+    font-weight: 900;
+    letter-spacing: 0.22em;
+    padding-left: 0.22em;
+    background: linear-gradient(180deg, #ffffff 0%, #b8e6e2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+    line-height: 1.1;
+  }
+  .full-name {
+    font-size: 1.25rem;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.95);
+    max-width: 880px;
+    margin: 0 auto 24px;
+    line-height: 1.8;
+    text-wrap: balance;
+    padding: 0 15px;
+    position: relative;
+    z-index: 1;
+  }
+  .full-name .hl {
+    color: var(--accent);
+    font-weight: 900;
+    font-size: 1.2em;
+    text-shadow: 0 0 8px rgba(233, 196, 106, 0.4);
+  }
+  .subtitle {
+    font-size: 1.35rem;
+    color: rgba(255, 255, 255, 0.92);
+    letter-spacing: 0.15em;
+    padding: 0 15px;
+    position: relative;
+    z-index: 1;
+    font-weight: 500;
+  }
+
+  /* ===== 內容容器 ===== */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+  section {
+    background: #fff;
+    border-radius: 20px;
+    padding: 48px 40px;
+    margin: 40px 0;
+    box-shadow: 0 8px 30px rgba(29, 166, 158, 0.06);
+    border: 1px solid rgba(29, 166, 158, 0.1);
+  }
+  section h2 {
+    font-size: 1.85rem;
+    color: var(--primary-dark);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  section h2::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 32px;
+    background: var(--primary);
+    border-radius: 4px;
+  }
+  section p { margin-bottom: 16px; font-size: 1.05rem; }
+
+  /* ===== 插圖 ===== */
+  .illustration {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+    margin: 30px auto 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease;
+  }
+  .illustration:hover { transform: scale(1.01); }
+  .illustration-caption {
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+  }
+
+  /* ===== 步驟時間軸 ===== */
+  .step { position: relative; padding-left: 60px; margin-bottom: 36px; }
+  .step:last-child { margin-bottom: 0; }
+  .step::before {
+    content: "";
+    position: absolute;
+    left: 19px; top: 40px; bottom: -36px;
+    width: 2px; background: var(--primary-light);
+  }
+  .step:last-child::before { display: none; }
+  .step .num {
+    position: absolute; left: 0; top: 0;
+    width: 40px; height: 40px;
+    background: var(--primary); color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(29, 166, 158, 0.3);
+    z-index: 1;
+  }
+  .step h3 { font-size: 1.25rem; color: var(--primary-dark); margin-bottom: 6px; }
+  .step .tag {
+    display: inline-block; background: var(--primary-light);
+    color: var(--primary-dark); font-size: 0.85rem;
+    padding: 3px 12px; border-radius: 20px;
+    margin-bottom: 8px; font-weight: 600;
+  }
+
+  /* ===== 兩欄佈局 ===== */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  /* ===== 參與條件 ===== */
+  .cond-list { display: flex; flex-direction: column; gap: 12px; }
+  .cond-card {
+    display: flex; align-items: center; gap: 12px;
+    background: #f7fcfb; border: 1px solid var(--primary-light);
+    border-radius: 14px; padding: 12px 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+  }
+  .cond-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 6px 16px rgba(29, 166, 158, 0.12);
+    transform: translateX(4px);
+  }
+  .cond-card .icon {
+    font-size: 1.2rem; background: #fff;
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    flex-shrink: 0;
+  }
+  .cond-card .text {
+    flex: 1; font-size: 0.95rem; font-weight: 500;
+    color: var(--text-dark); line-height: 1.5;
+  }
+  .cond-card input[type="checkbox"] { display: none; }
+  .cond-card .check {
+    width: 26px; height: 26px; border: 2px solid var(--primary-light);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; color: #fff; font-weight: 900; font-size: 0.85rem;
+    background: #fff; transition: all 0.3s ease;
+  }
+  .cond-card input[type="checkbox"]:checked ~ .check {
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+  .cond-card input[type="checkbox"]:checked ~ .check::before { content: "✓"; }
+
+  /* 條件插圖（444.png） */
+  .cond-illustration {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 24px auto 0;
+    border-radius: 12px;
+  }
+
+  /* ===== 獎勵 ===== */
+  .reward-flow-title {
+    font-size: 1.15rem; font-weight: 900; color: var(--primary-dark);
+    text-align: center; line-height: 2; margin-bottom: 24px;
+    padding: 14px 16px; background: var(--primary-light);
+    border-radius: 14px; letter-spacing: 0.02em;
+  }
+  .reward-flow-title .arrow-sym {
+    color: var(--accent); font-weight: 900; margin: 0 6px;
+    text-shadow: 0 0 6px rgba(233, 196, 106, 0.4);
+  }
+  .coupon-stack { display: flex; flex-direction: column; gap: 0; }
+  .coupon {
+    position: relative; background: #f7fcfb;
+    border: 2px dashed var(--primary); border-radius: 14px;
+    padding: 20px 24px; display: flex;
+    align-items: center; justify-content: space-between;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .coupon:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(29, 166, 158, 0.15); }
+  .coupon::before, .coupon::after {
+    content: ""; position: absolute; top: 50%;
+    width: 20px; height: 20px; background: #fff;
+    border-radius: 50%; transform: translateY(-50%);
+  }
+  .coupon::before { left: -11px; border-right: 2px dashed var(--primary); }
+  .coupon::after { right: -11px; border-left: 2px dashed var(--primary); }
+  .coupon .info { flex: 1; }
+  .coupon .info .title { font-size: 0.95rem; color: var(--text-light); margin-bottom: 4px; font-weight: 600; }
+  .coupon .info .desc { font-size: 1rem; color: var(--text-dark); font-weight: 500; }
+  .coupon .value { font-size: 1.6rem; font-weight: 900; color: var(--primary-dark); margin-left: 16px; white-space: nowrap; }
+  .coupon .value small { font-size: 0.9rem; font-weight: 700; }
+  .coupon.total { background: linear-gradient(135deg, #d4f0ee 0%, #b8e6e2 100%); border: 2px solid var(--primary); }
+  .coupon.total .value { color: var(--primary-dark); font-size: 2rem; }
+
+  .flow-arrow { display: flex; justify-content: center; align-items: center; padding: 6px 0; position: relative; z-index: 2; }
+  .flow-arrow::before {
+    content: "↓"; width: 32px; height: 32px; background: var(--primary);
+    color: #fff; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center;
+    font-weight: 900; font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(29, 166, 158, 0.3);
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+
+  .reward-note { font-size: 0.9rem; color: var(--text-light); margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--primary-light); }
+
+  /* ===== FAQ ===== */
+  .faq-item { border-bottom: 1px solid var(--primary-light); padding: 4px 0; }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-item summary {
+    cursor: pointer; padding: 18px 40px 18px 8px;
+    font-weight: 700; font-size: 1.1rem; color: var(--primary-dark);
+    position: relative; list-style: none; transition: color 0.2s;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+"; position: absolute; right: 8px; top: 50%;
+    transform: translateY(-50%); font-size: 1.5rem;
+    font-weight: 400; color: var(--primary); transition: transform 0.3s;
+  }
+  .faq-item[open] summary::after { content: "−"; transform: translateY(-50%) rotate(180deg); }
+  .faq-item summary:hover { color: var(--primary); }
+  .faq-item .answer { padding: 0 8px 20px 8px; color: var(--text-dark); font-size: 0.98rem; line-height: 1.9; }
+  .faq-item .answer a { color: var(--primary); text-decoration: none; font-weight: 600; border-bottom: 1px dashed var(--primary); }
+  .faq-item .answer a:hover { color: var(--primary-dark); }
+
+  /* ===== 報名 ===== */
+  .qr-wrap {
+    text-align: center; background: linear-gradient(135deg, #f7fcfb 0%, #d4f0ee 100%);
+    border-radius: 20px; padding: 40px 20px;
+    border: 2px dashed var(--primary); margin-top: 20px;
+  }
+  .qr-wrap img {
+    width: 220px; height: 220px; object-fit: contain;
+    border-radius: 16px; padding: 10px; background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  }
+  .qr-wrap p { margin-top: 20px; color: var(--primary-dark); font-weight: 600; font-size: 1.15rem; }
+  .qr-wrap .hint { font-size: 0.9rem; color: var(--text-light); font-weight: 400; }
+
+  /* ===== 底部 ===== */
+  footer { text-align: center; padding: 40px 20px 60px; color: var(--text-light); font-size: 0.9rem; }
+  footer a { color: var(--primary); text-decoration: none; }
+
+  /* ===== 手機優化 ===== */
+  @media (max-width: 768px) {
+    nav .links { display: none; }
+    nav .logo img { height: 28px; }
+    .brand { font-size: 3rem; letter-spacing: 0.15em; padding-left: 0.15em; }
+    .full-name { font-size: 0.95rem; line-height: 1.7; }
+    .subtitle { font-size: 1rem; letter-spacing: 0.1em; }
+    header { padding: 60px 16px 50px; }
+    section { padding: 32px 24px; }
+    section h2 { font-size: 1.5rem; }
+    .step h3 { font-size: 1.1rem; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .step { padding-left: 50px; }
+    .step::before { left: 15px; }
+    .step .num { width: 34px; height: 34px; font-size: 0.95rem; }
+    .coupon { padding: 16px; }
+    .coupon .value { font-size: 1.4rem; }
+    .reward-flow-title { font-size: 0.95rem; }
+    .cond-card { padding: 10px 14px; gap: 10px; }
+    .cond-card .icon { width: 34px; height: 34px; font-size: 1rem; }
+    .cond-card .check { width: 22px; height: 22px; font-size: 0.75rem; }
+    .illustration { border-radius: 12px; margin: 20px auto 10px; }
+    .cond-illustration { margin-top: 20px; border-radius: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 導覽列 -->
+<nav>
+  <div class="logo">
+    <img src="um_logo.png" alt="澳門大學">
+    <span>MOMENT</span>
+  </div>
+  <div class="links">
+    <a href="#intro">計劃簡介</a>
+    <a href="#steps">參與步驟</a>
+    <a href="#eligibility">參與條件</a>
+    <a href="#reward">獎勵</a>
+    <a href="#faq">常見問題</a>
+    <a href="#signup" class="btn-nav">立即報名</a>
+  </div>
+</nav>
+
+<header>
+  <h1 class="brand">MOMENT</h1>
+  <p class="full-name">
+    <span class="hl">M</span>omentary
+    <span class="hl">O</span>bservations
+    of
+    <span class="hl">M</span>ental Health and
+    <span class="hl">E</span>xperiences in
+    <span class="hl">N</span>aturalistic Contexts over
+    <span class="hl">T</span>ime
+  </p>
+  <p class="subtitle">尋求心理治療人士的心理健康與日常生活經歷計劃</p>
+</header>
+
+<div class="container">
+
+  <!-- 1. 計劃簡介 -->
+  <section id="intro">
+    <h2>一、計劃簡介</h2>
+    <p>
+      本計劃旨在了解正在尋求心理治療人士的日常情緒、壓力、科技使用、社交互動及身心健康，並探討這些因素如何在日常生活中發生變化及互相影響。
+    </p>
+    <p>
+      您的參與完全出於自願，所有資料僅供學術分析使用，並以去識別化方式處理，不會影響您原本在心理治療中心的輪候安排或服務質素。
+    </p>
+    
+    <img src="222.png" alt="EMA 動態手機示意圖" class="illustration">
+    <p class="illustration-caption">生態瞬時評估 (EMA) 示意圖：透過手機隨時隨地記錄您當下的感受。</p>
+  </section>
+
+  <!-- 2. 參與步驟 -->
+  <section id="steps">
+    <h2>二、參與步驟</h2>
+
+    <img src="333.png" alt="不同時間填寫問卷示意圖" class="illustration" style="margin-bottom: 12px;">
+    <p class="illustration-caption" style="margin-bottom: 36px;">無論早上、中午還是晚上，您都可以輕鬆透過手機完成問卷。</p>
+
+    <div class="step">
+      <div class="num">1</div>
+      <span class="tag">接收研究資訊</span>
+      <h3>由中心職員介紹</h3>
+      <p>當您聯絡婦聯心理治療中心尋求服務後，中心職員會簡介本計劃。您可能透過簡訊、傳單或掃描二維碼取得研究網頁連結。</p>
+    </div>
+
+    <div class="step">
+      <div class="num">2</div>
+      <span class="tag">網上填寫聯絡資料</span>
+      <h3>提供聯絡資料</h3>
+      <p>您透過研究網頁填寫簡短的聯絡資料表。計劃團隊收到後，將與中心核實您已聯絡中心尋求服務，且尚未開始接受心理治療。</p>
+    </div>
+
+    <div class="step">
+      <div class="num">3</div>
+      <span class="tag">核實與知情同意</span>
+      <h3>簽署知情同意書（含參與條件篩選）</h3>
+      <p>計劃團隊核實後會聯絡您簡介計劃，並提供電子版知情同意書。同意書內包含參與條件篩選，請確認您符合所有條件後，以電子方式簽署。</p>
+    </div>
+
+    <div class="step">
+      <div class="num">4</div>
+      <span class="tag">第一份問卷</span>
+      <h3>填寫第一份問卷（約 30 分鐘）</h3>
+      <p>簽署同意書且符合參與條件後，您將收到第一份問卷連結。這份問卷約需 <strong>30 分鐘</strong>，內容涵蓋日常情緒、壓力、科技使用及身心健康等，作為後續比較的基準。</p>
+    </div>
+
+    <div class="step">
+      <div class="num">5</div>
+      <span class="tag">連續 14 天定時</span>
+      <h3>連續 14 天定時問卷</h3>
+      <p>完成第一份問卷後，進入為期 <strong>14 天</strong> 的定時問卷階段。每天會在指定時間透過手機短訊收到 <strong>5 份問卷</strong>，每份約需 <strong>2-3 分鐘</strong> 完成。</p>
+      <p>完成 14 天問卷後，您可前往中心領取報酬。若未能即時填寫，系統會發送短訊提醒您。</p>
+    </div>
+
+    <div class="step">
+      <div class="num">6</div>
+      <span class="tag">六個月後</span>
+      <h3>六個月後填寫第二份問卷</h3>
+      <p>在完成第一份問卷約 <strong>6 個月後</strong>，您將獲邀完成一份約 <strong>30 分鐘</strong> 的第二份問卷。完成後可前往中心領取相應報酬。</p>
+    </div>
+  </section>
+
+  <!-- 3. 參與條件 & 4. 獎勵 -->
+  <div class="grid-2">
+    
+    <!-- 參與條件（可多選 + 444.png） -->
+    <section id="eligibility" style="margin: 0;">
+      <h2>三、參與條件</h2>
+      <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 16px;">
+        👉 請確認您滿足以下全部條件：
+      </p>
+      <div class="cond-list">
+        
+        <label class="cond-card">
+          <input type="checkbox" id="cond1">
+          <span class="icon">🎂</span>
+          <span class="text">我已年滿 18 歲。</span>
+          <span class="check"></span>
+        </label>
+
+        <label class="cond-card">
+          <input type="checkbox" id="cond2">
+          <span class="icon">📋</span>
+          <span class="text">我已聯絡婦聯心理治療中心尋求心理治療服務，並正在輪候接受心理治療。</span>
+          <span class="check"></span>
+        </label>
+
+        <label class="cond-card">
+          <input type="checkbox" id="cond3">
+          <span class="icon">🚫</span>
+          <span class="text">我目前沒有接受心理治療或服用精神科藥物。</span>
+          <span class="check"></span>
+        </label>
+
+        <label class="cond-card">
+          <input type="checkbox" id="cond4">
+          <span class="icon">🌙</span>
+          <span class="text">我目前沒有從事夜間工作或日夜輪班工作。</span>
+          <span class="check"></span>
+        </label>
+
+        <label class="cond-card">
+          <input type="checkbox" id="cond5">
+          <span class="icon">🗣️</span>
+          <span class="text">我具備良好的中文讀寫及理解能力。</span>
+          <span class="check"></span>
+        </label>
+
+        <label class="cond-card">
+          <input type="checkbox" id="cond6">
+          <span class="icon">📱</span>
+          <span class="text">我可使用手機、電腦或平板電腦，並具備穩定的網路連線。</span>
+          <span class="check"></span>
+        </label>
+
+        <label class="cond-card">
+          <input type="checkbox" id="cond7">
+          <span class="icon">📧</span>
+          <span class="text">我有一個目前正在使用的電郵地址，並能夠接收及查看電郵。</span>
+          <span class="check"></span>
+        </label>
+
+        <label class="cond-card">
+          <input type="checkbox" id="cond8">
+          <span class="icon">✈️</span>
+          <span class="text">在未來 15 天內，我沒有計劃連續超過 72 小時（3 天）不在澳門（例如外遊或度假）。</span>
+          <span class="check"></span>
+        </label>
+
+      </div>
+
+      <!-- 🌟 444.png 插圖 -->
+      <img src="444.png" alt="參與條件示意圖" class="cond-illustration">
+    </section>
+
+    <!-- 獎勵 -->
+    <section id="reward" style="margin: 0;">
+      <h2>四、參與獎勵</h2>
+
+      <p class="reward-flow-title">
+        完成第一份問卷
+        <span class="arrow-sym">→</span>
+        連續 14 天定時問卷
+        <span class="arrow-sym">→</span>
+        六個月後完成第二份問卷
+      </p>
+
+      <div class="coupon-stack">
+        <div class="coupon">
+          <div class="info">
+            <div class="title">第一份問卷（約 30 分鐘）</div>
+            <div class="desc">完成即可獲得</div>
+          </div>
+          <div class="value">100 <small>MOP</small></div>
+        </div>
+
+        <div class="flow-arrow"></div>
+
+        <div class="coupon">
+          <div class="info">
+            <div class="title">連續 14 天定時問卷（每份約 2-3 分鐘）</div>
+            <div class="desc">每完成一份可獲得 10 MOP<br>14 天最多 70 份，最高可獲 700 MOP</div>
+          </div>
+          <div class="value">10 <small>MOP/份</small></div>
+        </div>
+
+        <div class="flow-arrow"></div>
+
+        <div class="coupon">
+          <div class="info">
+            <div class="title">第二份問卷（六個月後，約 30 分鐘）</div>
+            <div class="desc">完成即可獲得</div>
+          </div>
+          <div class="value">100 <small>MOP</small></div>
+        </div>
+
+        <div class="flow-arrow"></div>
+
+        <div class="coupon total">
+          <div class="info">
+            <div class="title" style="color: var(--primary-dark); font-weight: 700;">完成所有問卷最高總報酬</div>
+            <div class="desc">100 + 700 + 100</div>
+          </div>
+          <div class="value">900 <small>MOP</small></div>
+        </div>
+      </div>
+
+      <p class="reward-note">
+        💡 報酬將以<strong>現金</strong>形式發放，由計劃團隊提供，並由澳門婦女聯合總會協助派發。具體領取安排將由計劃團隊另行通知。
+      </p>
+    </section>
+  </div>
+
+  <!-- 5. 常見問題 -->
+  <section id="faq">
+    <h2>五、常見問題</h2>
+
+    <details class="faq-item" open>
+      <summary>我什麼時候可以聯絡你們？</summary>
+      <div class="answer">
+        計劃團隊的服務時間為 <strong>星期一至五，上午 9:00 至下午 6:00</strong>（公眾假期除外）。您也可以隨時發送電郵，我們會在下一個工作日盡快回覆。
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>我該如何聯絡計劃團隊？</summary>
+      <div class="answer">
+        如您對本計劃有任何疑問，歡迎透過以下方式聯絡我們：<br>
+        • 電郵：<a href="mailto:maklabstudies@gmail.com">maklabstudies@gmail.com</a><br>
+        • 電話：<strong>6880 4495</strong><br>
+        • 或親臨澳門婦女聯合總會心理治療中心向櫃檯職員查詢。
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>如果問卷電郵被歸類為垃圾郵件（Spam）怎麼辦？</summary>
+      <div class="answer">
+        問卷邀請電郵有可能被您的電郵服務供應商誤判為垃圾郵件。建議您：
+        <br>① 檢查「垃圾郵件」或「促銷內容」資料夾。
+        <br>② 將寄件者電郵地址加入您的「安全寄件者」或「聯絡人」名單。
+        <br>③ 若仍找不到問卷，請主動聯絡計劃團隊，我們可為您重新發送或提供問卷連結。
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>參與獎勵是如何計算及發放的？</summary>
+      <div class="answer">
+        獎勵將根據您<strong>實際完成的問卷數量</strong>計算：
+        <br>• 第一份問卷：100 MOP
+        <br>• 每份連續 14 天定時問卷：10 MOP（14 天最多 70 份，最高 700 MOP）
+        <br>• 第二份問卷：100 MOP
+        <br>如完成所有問卷，最高總報酬為 <strong>900 MOP</strong>。所有報酬均以<strong>現金</strong>形式發放，由計劃團隊提供，並由澳門婦女聯合總會協助派發。具體領取安排將由計劃團隊另行通知。
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>如果我錯過了某份連續 14 天定時問卷，還能補填嗎？</summary>
+      <div class="answer">
+        若您未能即時填寫某份定時問卷，系統會發送短訊提醒您。您仍可在收到問卷後的<strong>指定時段內</strong>補填；惟逾時後該份問卷將無法補填。獎勵僅按實際完成的問卷數量計算。如遇特殊情況，歡迎主動聯絡計劃團隊。
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>我的個人資料會不會被洩露？</summary>
+      <div class="answer">
+        您的所有資料將以<strong>去識別化方式</strong>處理。您會獲分配一個參與者編號，研究資料以編號而非姓名儲存；您的聯絡資料與問卷資料將分開儲存，僅供獲授權的計劃團隊成員查閱。計劃團隊不會向心理治療中心提供您的個人問卷答案，所有結果僅以無法識別個別參與者身份的形式匯報。
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>我中途可以退出嗎？會不會影響我的治療輪候？</summary>
+      <div class="answer">
+        完全可以。參與本計劃<strong>完全屬自願性質</strong>，您可隨時退出，不會受到任何懲罰或負面後果。您的參與、拒絕參與或中途退出，均<strong>不會影響</strong>您目前或日後在心理治療中心接受服務的機會、輪候安排或服務質素。
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>如果我在填答問卷時感到情緒不適，該怎麼辦？</summary>
+      <div class="answer">
+        問卷內容涉及日常情緒與身心健康，部分題目可能讓您回想起不適的經歷。您可選擇<strong>不回答任何令您感到不舒服的問題</strong>，並可隨時退出。如您因填答而感到困擾，我們鼓勵您向心理治療中心的專業人員或其他您信任的人尋求協助。您亦可致電<strong>澳門明愛 24 小時生命熱線：2852 5222</strong>尋求情緒支援。
+      </div>
+    </details>
+
+  </section>
+
+  <!-- 6. 報名 -->
+  <section id="signup">
+    <h2>六、立即報名</h2>
+    <div class="qr-wrap">
+      <p>📱 報名二維碼即將上線，敬請期待！</p>
+      <p class="hint">若已有報名連結，請複製以下連結至瀏覽器：<br>（請在此填寫報名連結）</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  © 2026 MOMENT 心瞬研究 ｜ 澳門大學社會科學學院心理學系 ｜ 合作方：澳門婦女聯合總會<br>
+  聯絡電郵：maklabstudies@gmail.com ｜ 聯絡電話：6880 4495
+</footer>
+
+</body>
+</html>
