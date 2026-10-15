@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<!-- 新增 Montserrat 字體 -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --primary: #1da69e;
@@ -51,6 +53,15 @@
     letter-spacing: 2px;
   }
   nav .logo img { height: 36px; width: auto; display: block; }
+  /* 左上角副標題 */
+  nav .logo-sub {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--text-light);
+    margin-left: 6px;
+    white-space: nowrap;
+  }
   nav .links a {
     color: var(--text-dark);
     text-decoration: none;
@@ -102,13 +113,16 @@
     z-index: 1;
     line-height: 1.1;
   }
+  /* 英文全寫：Montserrat、加粗、放大 */
   .full-name {
-    font-size: 1.25rem;
-    letter-spacing: 0.04em;
+    font-family: 'Montserrat', 'Noto Sans TC', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
     color: rgba(255, 255, 255, 0.95);
-    max-width: 880px;
+    max-width: 920px;
     margin: 0 auto 24px;
-    line-height: 1.8;
+    line-height: 1.7;
     text-wrap: balance;
     padding: 0 15px;
     position: relative;
@@ -120,15 +134,15 @@
     font-size: 1.2em;
     text-shadow: 0 0 8px rgba(233, 196, 106, 0.4);
   }
-  /* 中文副標題放大突出 */
+  /* 中文副標題：放大、加粗 */
   .subtitle {
-    font-size: 1.7rem;
+    font-size: 2.2rem;
     color: #ffffff;
     letter-spacing: 0.18em;
     padding: 0 15px;
     position: relative;
     z-index: 1;
-    font-weight: 700;
+    font-weight: 900;
     text-shadow: 0 2px 10px rgba(0,0,0,0.15);
   }
 
@@ -331,9 +345,10 @@
   @media (max-width: 768px) {
     nav .links { display: none; }
     nav .logo img { height: 28px; }
+    nav .logo-sub { display: none; }  /* 手機版隱藏副標題 */
     .brand { font-size: 3rem; letter-spacing: 0.15em; padding-left: 0.15em; }
-    .full-name { font-size: 0.95rem; line-height: 1.7; }
-    .subtitle { font-size: 1.2rem; letter-spacing: 0.1em; }
+    .full-name { font-size: 1rem; line-height: 1.6; letter-spacing: 0.04em; }
+    .subtitle { font-size: 1.4rem; letter-spacing: 0.12em; }
     header { padding: 60px 16px 50px; }
     section { padding: 32px 24px; }
     section h2 { font-size: 1.5rem; }
@@ -359,6 +374,7 @@
   <div class="logo">
     <img src="um_logo.png" alt="澳門大學">
     <span>MOMENT</span>
+    <span class="logo-sub">生活點滴與心理健康研究</span>
   </div>
   <div class="links">
     <a href="#intro">計劃簡介</a>
