@@ -120,14 +120,16 @@
     font-size: 1.2em;
     text-shadow: 0 0 8px rgba(233, 196, 106, 0.4);
   }
+  /* 中文副標題放大突出 */
   .subtitle {
-    font-size: 1.35rem;
-    color: rgba(255, 255, 255, 0.92);
-    letter-spacing: 0.15em;
+    font-size: 1.7rem;
+    color: #ffffff;
+    letter-spacing: 0.18em;
     padding: 0 15px;
     position: relative;
     z-index: 1;
-    font-weight: 500;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.15);
   }
 
   /* ===== 內容容器 ===== */
@@ -209,20 +211,13 @@
   /* ===== 兩欄佈局 ===== */
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 
-  /* ===== 參與條件 ===== */
+  /* ===== 參與條件（靜態，不可勾選） ===== */
   .cond-list { display: flex; flex-direction: column; gap: 12px; }
   .cond-card {
     display: flex; align-items: center; gap: 12px;
     background: #f7fcfb; border: 1px solid var(--primary-light);
     border-radius: 14px; padding: 12px 16px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    user-select: none;
-  }
-  .cond-card:hover {
-    border-color: var(--primary);
-    box-shadow: 0 6px 16px rgba(29, 166, 158, 0.12);
-    transform: translateX(4px);
+    cursor: default;
   }
   .cond-card .icon {
     font-size: 1.2rem; background: #fff;
@@ -235,21 +230,9 @@
     flex: 1; font-size: 0.95rem; font-weight: 500;
     color: var(--text-dark); line-height: 1.5;
   }
-  .cond-card input[type="checkbox"] { display: none; }
-  .cond-card .check {
-    width: 26px; height: 26px; border: 2px solid var(--primary-light);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; color: #fff; font-weight: 900; font-size: 0.85rem;
-    background: #fff; transition: all 0.3s ease;
-  }
-  .cond-card input[type="checkbox"]:checked ~ .check {
-    background: var(--primary);
-    border-color: var(--primary);
-  }
-  .cond-card input[type="checkbox"]:checked ~ .check::before { content: "✓"; }
 
   /* 條件插圖（444.png） */
-   .cond-illustration {
+  .cond-illustration {
     display: block;
     width: 50%;
     max-width: 50%;
@@ -350,7 +333,7 @@
     nav .logo img { height: 28px; }
     .brand { font-size: 3rem; letter-spacing: 0.15em; padding-left: 0.15em; }
     .full-name { font-size: 0.95rem; line-height: 1.7; }
-    .subtitle { font-size: 1rem; letter-spacing: 0.1em; }
+    .subtitle { font-size: 1.2rem; letter-spacing: 0.1em; }
     header { padding: 60px 16px 50px; }
     section { padding: 32px 24px; }
     section h2 { font-size: 1.5rem; }
@@ -364,7 +347,6 @@
     .reward-flow-title { font-size: 0.95rem; }
     .cond-card { padding: 10px 14px; gap: 10px; }
     .cond-card .icon { width: 34px; height: 34px; font-size: 1rem; }
-    .cond-card .check { width: 22px; height: 22px; font-size: 0.75rem; }
     .illustration { border-radius: 12px; margin: 20px auto 10px; }
     .cond-illustration { margin-top: 20px; border-radius: 10px; }
   }
@@ -429,7 +411,7 @@
       <div class="num">1</div>
       <span class="tag">接收研究資訊</span>
       <h3>由中心職員介紹</h3>
-      <p>當您聯絡婦聯心理治療中心尋求服務後，中心職員會簡介本計劃。您可能透過簡訊、傳單或掃描二維碼取得研究網頁連結。</p>
+      <p>當您聯絡心理治療中心尋求服務後，中心職員會簡介本計劃。您可能透過短訊、傳單或掃描二維碼取得研究網頁連結。</p>
     </div>
 
     <div class="step">
@@ -465,14 +447,14 @@
       <div class="num">6</div>
       <span class="tag">六個月後</span>
       <h3>六個月後填寫第二份問卷</h3>
-      <p>在完成第一份問卷約 <strong>6 個月後</strong>，您將獲邀完成一份約 <strong>30 分鐘</strong> 的第跟進問卷。完成後可前往中心領取相應報酬。</p>
+      <p>在完成第一份問卷約 <strong>6 個月後</strong>，您將獲邀完成一份約 <strong>30 分鐘</strong> 的第二份問卷。完成後可前往中心領取相應報酬。</p>
     </div>
   </section>
 
   <!-- 3. 參與條件 & 4. 獎勵 -->
   <div class="grid-2">
     
-    <!-- 參與條件（可多選 + 444.png） -->
+    <!-- 參與條件（靜態，不可勾選） -->
     <section id="eligibility" style="margin: 0;">
       <h2>三、參與條件</h2>
       <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 16px;">
@@ -480,65 +462,49 @@
       </p>
       <div class="cond-list">
         
-        <label class="cond-card">
-          <input type="checkbox" id="cond1">
+        <div class="cond-card">
           <span class="icon">🎂</span>
           <span class="text">我已年滿 18 歲。</span>
-          <span class="check"></span>
-        </label>
+        </div>
 
-        <label class="cond-card">
-          <input type="checkbox" id="cond2">
+        <div class="cond-card">
           <span class="icon">📋</span>
-          <span class="text">我已聯絡婦聯心理治療中心尋求心理治療服務，並正在輪候接受心理治療。</span>
-          <span class="check"></span>
-        </label>
+          <span class="text">我已聯絡心理治療中心尋求心理治療服務，並正在輪候接受心理治療。</span>
+        </div>
 
-        <label class="cond-card">
-          <input type="checkbox" id="cond3">
+        <div class="cond-card">
           <span class="icon">🚫</span>
           <span class="text">我目前沒有接受心理治療或服用精神科藥物。</span>
-          <span class="check"></span>
-        </label>
+        </div>
 
-        <label class="cond-card">
-          <input type="checkbox" id="cond4">
+        <div class="cond-card">
           <span class="icon">🌙</span>
           <span class="text">我目前沒有從事夜間工作或日夜輪班工作。</span>
-          <span class="check"></span>
-        </label>
+        </div>
 
-        <label class="cond-card">
-          <input type="checkbox" id="cond5">
+        <div class="cond-card">
           <span class="icon">🗣️</span>
           <span class="text">我具備良好的中文讀寫及理解能力。</span>
-          <span class="check"></span>
-        </label>
+        </div>
 
-        <label class="cond-card">
-          <input type="checkbox" id="cond6">
+        <div class="cond-card">
           <span class="icon">📱</span>
           <span class="text">我可使用手機、電腦或平板電腦，並具備穩定的網路連線。</span>
-          <span class="check"></span>
-        </label>
+        </div>
 
-        <label class="cond-card">
-          <input type="checkbox" id="cond7">
+        <div class="cond-card">
           <span class="icon">📧</span>
           <span class="text">我有一個目前正在使用的電郵地址，並能夠接收及查看電郵。</span>
-          <span class="check"></span>
-        </label>
+        </div>
 
-        <label class="cond-card">
-          <input type="checkbox" id="cond8">
+        <div class="cond-card">
           <span class="icon">✈️</span>
           <span class="text">在未來 15 天內，我沒有計劃連續超過 72 小時（3 天）不在澳門（例如外遊或度假）。</span>
-          <span class="check"></span>
-        </label>
+        </div>
 
       </div>
 
-      <!-- 🌟 444.png 插圖 -->
+      <!-- 444.png 插圖 -->
       <img src="444.png" alt="參與條件示意圖" class="cond-illustration">
     </section>
 
@@ -595,7 +561,7 @@
       </div>
 
       <p class="reward-note">
-        💡 報酬將以<strong>現金</strong>形式發放，由計劃團隊提供，並由澳門婦女聯合總會協助派發。具體領取安排將由計劃團隊另行通知。
+        💡 報酬將以<strong>現金</strong>形式發放。具體安排將後續由研究負責人員另行通知。
       </p>
     </section>
   </div>
@@ -605,23 +571,6 @@
     <h2>五、常見問題</h2>
 
     <details class="faq-item" open>
-      <summary>我什麼時候可以聯絡你們？</summary>
-      <div class="answer">
-        計劃團隊的服務時間為 <strong>星期一至五，上午 9:00 至下午 6:00</strong>（公眾假期除外）。您也可以隨時發送電郵，我們會在下一個工作日盡快回覆。
-      </div>
-    </details>
-
-    <details class="faq-item">
-      <summary>我該如何聯絡計劃團隊？</summary>
-      <div class="answer">
-        如您對本計劃有任何疑問，歡迎透過以下方式聯絡我們：<br>
-        • 電郵：<a href="mailto:maklabstudies@gmail.com">maklabstudies@gmail.com</a><br>
-        • 電話：<strong>6880 4495</strong><br>
-        • 或親臨澳門婦女聯合總會心理治療中心向櫃檯職員查詢。
-      </div>
-    </details>
-
-    <details class="faq-item">
       <summary>如果問卷電郵被歸類為垃圾郵件（Spam）怎麼辦？</summary>
       <div class="answer">
         問卷邀請電郵有可能被您的電郵服務供應商誤判為垃圾郵件。建議您：
@@ -632,13 +581,24 @@
     </details>
 
     <details class="faq-item">
+      <summary>如果問卷電郵被標記為「宣傳」或「促銷」郵件怎麼辦？</summary>
+      <div class="answer">
+        部分電郵服務供應商（如 Gmail）可能會將問卷邀請郵件歸類為「宣傳」或「促銷」郵件。您只需：
+        <br>① 在「宣傳」或「促銷」標籤中找到該郵件。
+        <br>② 將郵件拖曳至「主要收件箱」，或點擊「移至」→「主要收件箱」。
+        <br>③ 若系統詢問，選擇「一律顯示此類郵件」或「將此寄件者加入聯絡人」。
+        <br>若仍找不到，歡迎聯絡計劃團隊。
+      </div>
+    </details>
+
+    <details class="faq-item">
       <summary>參與獎勵是如何計算及發放的？</summary>
       <div class="answer">
         獎勵將根據您<strong>實際完成的問卷數量</strong>計算：
         <br>• 第一份問卷：100 MOP
         <br>• 每份連續 14 天定時問卷：10 MOP（14 天最多 70 份，最高 700 MOP）
         <br>• 第二份問卷：100 MOP
-        <br>如完成所有問卷，最高總報酬為 <strong>900 MOP</strong>。所有報酬均以<strong>現金</strong>形式發放，由計劃團隊提供，並由澳門婦女聯合總會協助派發。具體領取安排將由計劃團隊另行通知。
+        <br>如完成所有問卷，最高總報酬為 <strong>900 MOP</strong>。所有報酬均以<strong>現金</strong>形式發放。具體安排將後續由研究負責人員另行通知。
       </div>
     </details>
 
@@ -670,21 +630,39 @@
       </div>
     </details>
 
+    <details class="faq-item">
+      <summary>我什麼時候可以聯絡你們？</summary>
+      <div class="answer">
+        您可以在任何時間發送電郵至 <a href="mailto:maklabstudies@gmail.com">maklabstudies@gmail.com</a>，我們看到後會盡快回覆，通常於 1 個工作日內回覆。
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>我該如何聯絡計劃團隊？</summary>
+      <div class="answer">
+        如您對本計劃有任何疑問，歡迎透過以下方式聯絡我們：<br>
+        • 電郵：<a href="mailto:maklabstudies@gmail.com">maklabstudies@gmail.com</a><br>
+        • 電話：<strong>6880 4495</strong><br>
+        • 或親臨心理治療中心向櫃檯職員查詢。
+      </div>
+    </details>
+
   </section>
 
   <!-- 6. 報名 -->
   <section id="signup">
     <h2>六、立即報名</h2>
     <div class="qr-wrap">
-      <p>📱 報名二維碼即將上線，敬請期待！</p>
-      <p class="hint">若已有報名連結，請複製以下連結至瀏覽器：<br>（請在此填寫報名連結）</p>
+      <img src="code.png" alt="報名二維碼">
+      <p>請用手機掃描上方二維碼，進入報名頁面</p>
+      <p class="hint">若無法掃描，請複製以下連結至瀏覽器：<br>（請在此填寫報名連結）</p>
     </div>
   </section>
 
 </div>
 
 <footer>
-  © 2026 MOMENT 心瞬研究 ｜ 澳門大學社會科學學院心理學系 ｜ 合作方：澳門婦女聯合總會<br>
+  © 2026 MOMENT 心瞬研究 ｜ 澳門大學社會科學學院心理學系 ｜ 合作機構：婦聯心理治療中心<br>
   聯絡電郵：maklabstudies@gmail.com ｜ 聯絡電話：6880 4495
 </footer>
 
