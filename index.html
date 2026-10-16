@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MOMENT｜生活點滴與心理健康研究計畫</title>
+<title>MOMENT｜生活點滴與心理健康研究</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<!-- 新增 Montserrat 字體 -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -53,7 +52,6 @@
     letter-spacing: 2px;
   }
   nav .logo img { height: 36px; width: auto; display: block; }
-  /* 左上角副標題 */
   nav .logo-sub {
     font-size: 0.8rem;
     font-weight: 500;
@@ -113,7 +111,6 @@
     z-index: 1;
     line-height: 1.1;
   }
-  /* 英文全寫：Montserrat、加粗、放大 */
   .full-name {
     font-family: 'Montserrat', 'Noto Sans TC', sans-serif;
     font-size: 1.6rem;
@@ -134,7 +131,6 @@
     font-size: 1.2em;
     text-shadow: 0 0 8px rgba(233, 196, 106, 0.4);
   }
-  /* 中文副標題：放大、加粗 */
   .subtitle {
     font-size: 2.2rem;
     color: #ffffff;
@@ -222,6 +218,27 @@
     margin-bottom: 8px; font-weight: 600;
   }
 
+  /* 定時問卷時間表 */
+  .time-list {
+    list-style: none;
+    margin: 12px 0 16px 0;
+    padding-left: 8px;
+  }
+  .time-list li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 6px;
+    font-size: 1rem;
+  }
+  .time-list li::before {
+    content: "●";
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+    font-size: 0.8rem;
+    top: 0.35em;
+  }
+
   /* ===== 兩欄佈局 ===== */
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 
@@ -245,7 +262,7 @@
     color: var(--text-dark); line-height: 1.5;
   }
 
-  /* 條件插圖（444.png） */
+  /* 條件插圖 */
   .cond-illustration {
     display: block;
     width: 50%;
@@ -345,7 +362,7 @@
   @media (max-width: 768px) {
     nav .links { display: none; }
     nav .logo img { height: 28px; }
-    nav .logo-sub { display: none; }  /* 手機版隱藏副標題 */
+    nav .logo-sub { display: none; }
     .brand { font-size: 3rem; letter-spacing: 0.15em; padding-left: 0.15em; }
     .full-name { font-size: 1rem; line-height: 1.6; letter-spacing: 0.04em; }
     .subtitle { font-size: 1.4rem; letter-spacing: 0.12em; }
@@ -364,6 +381,7 @@
     .cond-card .icon { width: 34px; height: 34px; font-size: 1rem; }
     .illustration { border-radius: 12px; margin: 20px auto 10px; }
     .cond-illustration { margin-top: 20px; border-radius: 10px; }
+    .time-list li { font-size: 0.95rem; }
   }
 </style>
 </head>
@@ -397,7 +415,7 @@
     <span class="hl">N</span>aturalistic Contexts over
     <span class="hl">T</span>ime
   </p>
-  <p class="subtitle">生活點滴與心理健康研究計畫</p>
+  <p class="subtitle">生活點滴與心理健康研究</p>
 </header>
 
 <div class="container">
@@ -412,7 +430,7 @@
       您的參與完全出於自願，所有資料僅供學術分析使用，並以去識別化方式處理，不會影響您原本在心理治療中心的輪候安排或服務質素。
     </p>
     
-    <img src="222.png" alt="EMA 動態手機示意圖" class="illustration">
+    <img src="illustration-EMA.png" alt="EMA 動態手機示意圖" class="illustration">
     <p class="illustration-caption">生態瞬時評估 (EMA) 示意圖：透過手機隨時隨地記錄您當下的感受。</p>
   </section>
 
@@ -420,7 +438,7 @@
   <section id="steps">
     <h2>二、參與步驟</h2>
 
-    <img src="333.png" alt="不同時間填寫問卷示意圖" class="illustration" style="margin-bottom: 12px;">
+    <img src="illustration-daily.png" alt="不同時間填寫問卷示意圖" class="illustration" style="margin-bottom: 12px;">
     <p class="illustration-caption" style="margin-bottom: 36px;">無論早上、中午還是晚上，您都可以輕鬆透過手機完成問卷。</p>
 
     <div class="step">
@@ -455,8 +473,16 @@
       <div class="num">5</div>
       <span class="tag">連續 14 天定時</span>
       <h3>連續 14 天定時問卷</h3>
-      <p>完成第一份問卷後，進入為期 <strong>14 天</strong> 的定時問卷階段。每天會在指定時間透過手機短訊收到 <strong>5 份問卷</strong>，每份約需 <strong>2-3 分鐘</strong> 完成。</p>
-      <p>完成 14 天問卷後，您可前往中心領取報酬。若未能即時填寫，系統會發送短訊提醒您。</p>
+      <p>完成第一份問卷後，進入為期 <strong>14 天</strong> 的定時問卷階段。每天會在以下指定時間透過手機短訊收到問卷：</p>
+      <ul class="time-list">
+        <li><strong>10:00</strong> — 第一次問卷</li>
+        <li><strong>12:30</strong> — 第二次問卷</li>
+        <li><strong>15:00</strong> — 第三次問卷</li>
+        <li><strong>17:30</strong> — 第四次問卷</li>
+        <li><strong>20:00</strong> — 第五次問卷</li>
+      </ul>
+      <p>每份問卷約需 <strong>2-3 分鐘</strong> 完成，並於發送後 <strong>2 小時內</strong> 有效，逾時將無法補填。若未能即時填寫，系統會發送短訊提醒您。</p>
+      <p>完成 14 天問卷後，您可前往中心領取報酬。</p>
     </div>
 
     <div class="step">
@@ -520,8 +546,8 @@
 
       </div>
 
-      <!-- 444.png 插圖 -->
-      <img src="444.png" alt="參與條件示意圖" class="cond-illustration">
+      <!-- 條件插圖 -->
+      <img src="illustration-checklist.png" alt="參與條件示意圖" class="cond-illustration">
     </section>
 
     <!-- 獎勵 -->
@@ -669,7 +695,7 @@
   <section id="signup">
     <h2>六、立即報名</h2>
     <div class="qr-wrap">
-      <img src="code.png" alt="報名二維碼">
+      <img src="moment-registration.png" alt="報名二維碼">
       <p>請用手機掃描上方二維碼，進入報名頁面</p>
       <p class="hint">若無法掃描，請複製以下連結至瀏覽器：<br>www.maklabstudies.com/moment</p>
     </div>
